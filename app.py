@@ -3,8 +3,8 @@ import pandas as pd
 import pickle
 
 # Load the saved model and scaler
-model_path = 'decision_tree_model.pkl'  # Update this with the actual path to your model
-scaler_path = 'scaler.pkl'  # Update this with the actual path to your scaler
+model_path = 'decision_tree_model.pkl' 
+scaler_path = 'scaler.pkl' 
 with open(model_path, 'rb') as file:
     model = pickle.load(file)
 with open(scaler_path, 'rb') as file:
@@ -83,15 +83,12 @@ model_columns = ['Tenure', 'CityTier', 'WarehouseToHome', 'HourSpendOnApp',
        'PreferedOrderCat_Others', 'MaritalStatus_Divorced',
        'MaritalStatus_Married', 'MaritalStatus_Single']
 
-# Add missing columns with default value 0
+
 for col in model_columns:
     if col not in input_df_encoded.columns:
         input_df_encoded[col] = 0
 
 input_df_encoded = input_df_encoded[model_columns]
-
-# Scale the input data
-
 
 # Predict button
 if st.button('Predict'):
