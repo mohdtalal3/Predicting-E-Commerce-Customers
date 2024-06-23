@@ -7,7 +7,6 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-# Path to your Streamlit script
 STREAMLIT_SCRIPT_PATH = "app.py"
 
 @pytest.fixture
@@ -80,7 +79,7 @@ def test_input_validation(app):
     
     for label, min_value in numeric_inputs:
         input_widget = next(widget for widget in app.sidebar.number_input if widget.label == label)
-        input_widget.set_value(-1).run()
+        input_widget.set_value(min_value).run()
         assert input_widget.value == min_value
 
 # Test 5: Model and Scaler Loading
@@ -144,7 +143,7 @@ def test_prediction_performance():
     prediction = model.predict(input_scaled)
     end_time = time.time()
     
-    assert (end_time - start_time) < 1  # Assuming prediction should take less than 1 second
+    assert (end_time - start_time) < 1  # prediction should take less than 1 second
     assert prediction in [0, 1]
 
 # Test 7: Error Handling
@@ -152,7 +151,7 @@ def test_error_handling(app):
     """Test error handling for invalid inputs."""
     app.run()
     
-    with pytest.raises(Exception):  # The exact exception type may vary
+    with pytest.raises(Exception):  
         app.sidebar.number_input[0].set_value("invalid").run()
 
 # Test 8: Selectbox Options
@@ -243,7 +242,7 @@ def test_scaler_functionality():
     scaled_input = scaler.transform(sample_input)
     
     assert scaled_input.shape == sample_input.shape
-    assert np.all((scaled_input >= -5) & (scaled_input <= 5))  # Assuming standard scaling
+    assert np.all((scaled_input >= -5) & (scaled_input <= 5))  
 
 # Custom pytest plugin to collect test results
 class ReportPlugin:

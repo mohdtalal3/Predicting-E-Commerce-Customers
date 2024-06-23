@@ -1,15 +1,15 @@
-Test Report - Generated on 2024-06-23 23:29:01
+Test Report - Generated on 2024-06-23 23:46:02
 
 Total Tests: 12
-Passed: 8
-Failed: 4
-Pass Rate: 66.67%
+Passed: 9
+Failed: 3
+Pass Rate: 75.00%
 
 Detailed Test Results:
 test.py::test_app_title: passed
 test.py::test_sidebar_inputs: passed
 test.py::test_prediction_button: passed
-test.py::test_input_validation: failed
+test.py::test_input_validation: passed
 test.py::test_model_loading: passed
 test.py::test_prediction_performance: passed
 test.py::test_error_handling: passed
